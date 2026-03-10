@@ -1,38 +1,32 @@
-import { type User, type InsertUser } from "@shared/schema";
-import { randomUUID } from "crypto";
-
-// modify the interface with any CRUD methods
-// you might need
+import { db } from "./db";
+import { teamMembers, rules, type TeamMember, type Rule, type InsertTeamMember, type InsertRule } from "@shared/schema";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  getTeamMembers(): Promise<TeamMember[]>;
+  getRules(): Promise<Rule[]>;
+  createTeamMember(member: InsertTeamMember): Promise<TeamMember>;
+  createRule(rule: InsertRule): Promise<Rule>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<string, User>;
-
-  constructor() {
-    this.users = new Map();
+export class DatabaseStorage implements IStorage {
+  async getTeamMembers(): Promise<TeamMember[]> {
+    return await db.select().from(teamMembers);
   }
 
-  async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
+  async getRules(): Promise<Rule[]> {
+    return await db.select().from(rules);
   }
 
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+  async createTeamMember(member: InsertTeamMember): Promise<TeamMember> {
+    const [newMember] = await db.insert(teamMembers).values(member).returning();
+    return newMember;
   }
 
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+  async createRule(rule: InsertRule): Promise<Rule> {
+    const [newRule] = await db.insert(rules).values(rule).returning();
+    return newRule;
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
