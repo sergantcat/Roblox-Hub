@@ -6,8 +6,8 @@ import { Link } from "wouter";
 
 export default function Home() {
   const gameLink = "#"; // Replace with actual game link
-  const groupLink = "#"; // Replace with actual group link
-  const discordLink = "#"; // Replace with actual discord link
+  const groupLink = "https://www.roblox.com/share/g/327048760"; // Replace with actual group link
+  const discordLink = "https://discord.gg/fvrcwEC58G"; // Replace with actual discord link
 
   return (
     <Layout>
