@@ -42,8 +42,8 @@ export function Navbar() {
               <Gamepad2 className="w-6 h-6 text-white" />
               <div className="absolute inset-0 rounded-lg bg-primary blur-md opacity-50 group-hover:opacity-100 transition-opacity"></div>
             </div>
-            <span className="font-display font-bold text-xl md:text-2xl tracking-widest text-foreground group-hover:neon-text-primary transition-all">
-              PROJECT<span className="text-primary">NOVA</span>
+            <span className="font-display font-bold text-lg md:text-xl tracking-widest text-foreground group-hover:neon-text-primary transition-all">
+              NDRI
             </span>
           </Link>
 

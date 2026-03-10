@@ -13,16 +13,12 @@ export default function Home() {
     <Layout>
       {/* HERO SECTION */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-24">
-        {/* Background Image with Overlay */}
+        {/* Gaming-styled Background without real-life images */}
         <div className="absolute inset-0 z-0">
-          {/* landing page hero futuristic sci-fi city neon game environment */}
-          <img 
-            src="https://pixabay.com/get/g2e81adb3968a030d08ebc542d5e9cc67994e67aecb67e0c9fbf2feb49eb83711bfbbd5adb7ff50e13484bcb7b458cc4788818e8daddb94c4731a7cbc9e66e7e8_1280.jpg" 
-            alt="Game Background" 
-            className="w-full h-full object-cover object-center opacity-40"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background"></div>
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+')] opacity-20 mix-blend-overlay"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-secondary/5"></div>
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[120px] animate-pulse" style={{animationDelay: "1s"}}></div>
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTAgMGg0MHY0MEgweiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIgc3Ryb2tlLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')]"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10 text-center">
@@ -38,12 +34,12 @@ export default function Home() {
             </div>
             
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-none">
-              ENTER THE <br />
-              <span className="text-gradient">NEON REALM</span>
+              NUCLEAR DETRIUM <br />
+              <span className="text-gradient">RESEARCH INSTITUTE</span>
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-              Experience the most immersive roleplay game on Roblox. Join thousands of players, build your legacy, and dominate the city streets.
+              Experience an immersive scientific adventure on Roblox. Join thousands of players, uncover mysteries, and become a legendary researcher.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -173,20 +169,23 @@ export default function Home() {
               className="flex-1 relative"
             >
               <div className="aspect-square max-w-md mx-auto relative">
-                <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full"></div>
-                {/* landing page feature grid of stylized avatars or characters */}
-                <img 
-                  src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop" 
-                  alt="Gameplay showcase" 
-                  className="rounded-2xl border-2 border-white/10 shadow-2xl relative z-10 object-cover w-full h-full grayscale-[20%] hover:grayscale-0 transition-all duration-500"
-                />
+                <div className="absolute inset-0 bg-primary/30 blur-[100px] rounded-full"></div>
+                
+                {/* Gaming-style showcase with gradient instead of real image */}
+                <div className="rounded-2xl border-2 border-primary/30 shadow-2xl relative z-10 w-full h-full bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20 flex items-center justify-center overflow-hidden">
+                  <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgZmlsbD0ibm9uZSI+PGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iMzAiIHN0cm9rZT0iIzAwZjBmZiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjEiLz48L3N2Zz4=')] opacity-50"></div>
+                  <div className="flex flex-col items-center justify-center gap-4 z-10">
+                    <Gamepad2 className="w-20 h-20 text-primary animate-pulse" />
+                    <p className="font-display text-xl text-center text-muted-foreground">IMMERSIVE GAMEPLAY</p>
+                  </div>
+                </div>
                 
                 {/* Decorative floating elements */}
                 <div className="absolute -top-6 -right-6 w-24 h-24 glass-panel rounded-xl border-primary/30 z-20 flex items-center justify-center animate-[bounce_4s_infinite]">
                   <Gamepad2 className="w-10 h-10 text-primary" />
                 </div>
                 <div className="absolute -bottom-8 -left-8 w-32 h-24 glass-panel rounded-xl border-accent/30 z-20 p-4 animate-[bounce_5s_infinite_0.5s]">
-                   <p className="text-xs font-display text-muted-foreground">CURRENT PLAYERS</p>
+                   <p className="text-xs font-display text-muted-foreground">ACTIVE PLAYERS</p>
                    <p className="text-2xl font-bold text-accent">24,592</p>
                 </div>
               </div>

@@ -18,11 +18,11 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-3 mb-6 inline-flex">
               <Gamepad2 className="w-8 h-8 text-primary" />
               <span className="font-display font-bold text-2xl tracking-widest text-foreground">
-                PROJECT<span className="text-primary">NOVA</span>
+                NDRI
               </span>
             </Link>
             <p className="text-muted-foreground max-w-md mb-6 leading-relaxed">
-              Experience the next generation of Roblox gaming. Join thousands of players in an immersive world built by an incredible team of developers.
+              Welcome to the Nuclear Detrium Research Institute. Join thousands of players in an immersive scientific adventure built by an incredible team of developers.
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all">
@@ -71,7 +71,7 @@ export function Footer() {
         <div className="h-px w-full bg-white/5 mb-8" />
         
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>&copy; {currentYear} Project Nova. All rights reserved.</p>
+          <p>&copy; {currentYear} Nuclear Detrium Research Institute. All rights reserved.</p>
           <p>Not affiliated with Roblox Corporation.</p>
         </div>
       </div>
