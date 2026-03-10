@@ -30,7 +30,7 @@ export default function Home() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-display font-bold tracking-widest mb-8">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-              NEW UPDATE IS LIVE
+              GAME IS IN DEVELOPMENT
             </div>
             
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-none">
