@@ -59,11 +59,12 @@ async function seedDatabase() {
   const existingRules = await storage.getRules();
   if (existingRules.length === 0) {
     const rulesList = [
-      { title: "Respect Everyone", description: "Treat all players, developers, and moderators with respect. Harassment, bullying, or hate speech will not be tolerated." },
-      { title: "No Exploiting or Hacking", description: "Using third-party software, scripts, or exploits to gain an unfair advantage is strictly prohibited and will result in a permanent ban." },
-      { title: "No Scamming or Spamming", description: "Do not attempt to scam other players out of items or currency. Spamming the chat is also not allowed." },
-      { title: "Keep it Family Friendly", description: "Ensure all communication and actions are appropriate for all ages. No NSFW content or inappropriate behavior." },
-      { title: "Listen to Moderators", description: "The moderation team is here to help keep the game safe and fun. Please follow their instructions." },
+      { title: "No Nuclear Leaks", description: "Do not attempt to leak radioactive materials outside designated containment zones. This will result in immediate quarantine or ban." },
+      { title: "Respect Lab Hierarchy", description: "Follow instructions from Senior Researchers and Administrators. Insubordination in critical experiments will not be tolerated." },
+      { title: "No Unauthorized Experiments", description: "Conducting experiments without proper authorization or safety gear is forbidden. Always use the lab safety protocols." },
+      { title: "Keep the Lab Clean", description: "Do not spam the chat, spam items, or leave hazardous materials in common areas. Maintain workplace safety at all times." },
+      { title: "Teamwork Makes the Dream Work", description: "Cooperate with other researchers. Griefing, sabotaging others' work, or trolling will result in a permanent ban from the institute." },
+      { title: "No Real-World Threats", description: "Keep all communication professional and respectful. No threats, harassment, or inappropriate language. We're here to have fun, not drama." },
     ];
     for (const rule of rulesList) {
       await storage.createRule(rule);
