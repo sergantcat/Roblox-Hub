@@ -6,7 +6,7 @@ export function Footer() {
   
   // EXTERNAL LINKS
   const discordLink = "#";
-  const robloxGroupLink = "#";
+  const robloxGroupLink = "https://www.roblox.com/share/g/327048760";
   const gameLink = "#";
 
   return (

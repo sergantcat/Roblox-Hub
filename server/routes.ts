@@ -28,15 +28,17 @@ async function seedDatabase() {
   if (existingMembers.length === 0) {
     // Adding 9 Devs
     const devs = [
-      { name: "DevOne", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=DevOne" },
-      { name: "DevTwo", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=DevTwo" },
-      { name: "DevThree", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=DevThree" },
-      { name: "DevFour", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=DevFour" },
-      { name: "DevFive", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=DevFive" },
-      { name: "DevSix", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=DevSix" },
-      { name: "DevSeven", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=DevSeven" },
-      { name: "DevEight", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=DevEight" },
-      { name: "DevNine", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=DevNine" },
+      { name: "Homejungle123", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Homejungle123" },
+      { name: "Erycd14", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Erycd14" },
+      { name: "CaptainUSC1", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=CaptainUSC1" },
+      { name: "James", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=James" },
+      { name: "Marioplayz", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Marioplayz" },
+      { name: "Nichita", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Nichita" },
+      { name: "Kolofdit", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Kolofdit" },
+      { name: "Airspeed60", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Airspeed60" },
+      { name: "AnNoobi5", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=AnNoobi5dev" },
+      { name: "KirillGl632", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=KirillGl632" },
+      { name: "Kacpersok", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Kacpersok" },
     ];
     for (const dev of devs) {
       await storage.createTeamMember(dev);
@@ -44,12 +46,12 @@ async function seedDatabase() {
 
     // Adding 6 Mods
     const mods = [
-      { name: "ModOne", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=ModOne" },
-      { name: "ModTwo", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=ModTwo" },
-      { name: "ModThree", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=ModThree" },
-      { name: "ModFour", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=ModFour" },
-      { name: "ModFive", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=ModFive" },
-      { name: "ModSix", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=ModSix" },
+      { name: "AnNoobi5", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=AnNoobi5mod" },
+      { name: "PCS802", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=PCS802" },
+      { name: "Erycd14", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Erycd14mod" },
+      { name: "ArmedF16", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=ArmedF16" },
+      { name: "Homejungle123", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Homejungle123mod" },
+      { name: "James", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jamesmod" },
     ];
     for (const mod of mods) {
       await storage.createTeamMember(mod);
