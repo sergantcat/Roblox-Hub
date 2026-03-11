@@ -186,7 +186,7 @@ export default function Home() {
                 </div>
                 <div className="absolute -bottom-8 -left-8 w-32 h-24 glass-panel rounded-xl border-accent/30 z-20 p-4 animate-[bounce_5s_infinite_0.5s]">
                    <p className="text-xs font-display text-muted-foreground">ACTIVE PLAYERS</p>
-                   <p className="text-2xl font-bold text-accent">24,592</p>
+                   <p className="text-2xl font-bold text-accent">100</p>
                 </div>
               </div>
             </motion.div>

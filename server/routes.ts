@@ -59,12 +59,17 @@ async function seedDatabase() {
   const existingRules = await storage.getRules();
   if (existingRules.length === 0) {
     const rulesList = [
-      { title: "No Nuclear Leaks", description: "Do not attempt to leak radioactive materials outside designated containment zones. This will result in immediate quarantine or ban." },
-      { title: "Respect Lab Hierarchy", description: "Follow instructions from Senior Researchers and Administrators. Insubordination in critical experiments will not be tolerated." },
-      { title: "No Unauthorized Experiments", description: "Conducting experiments without proper authorization or safety gear is forbidden. Always use the lab safety protocols." },
-      { title: "Keep the Lab Clean", description: "Do not spam the chat, spam items, or leave hazardous materials in common areas. Maintain workplace safety at all times." },
-      { title: "Teamwork Makes the Dream Work", description: "Cooperate with other researchers. Griefing, sabotaging others' work, or trolling will result in a permanent ban from the institute." },
-      { title: "No Real-World Threats", description: "Keep all communication professional and respectful. No threats, harassment, or inappropriate language. We're here to have fun, not drama." },
+      { title: "Do not share any 18+ content.", description: "" },
+      { title: "No drugs and criminal activity.", description: "" },
+      { title: "Do not dox someone.", description: "" },
+      { title: "Do not use programs that may or will destroy the server.", description: "CRITICAL" },
+      { title: "Respect the Discord ToS.", description: "" },
+      { title: "Do not spam in the chat.", description: "" },
+      { title: "Please use English in all of the chats.", description: "CRITICAL" },
+      { title: "Do Not Ping randomly. You are allowed to ping the owner.", description: "CRITICAL" },
+      { title: "To receive owner's response you can ping him if he is not online.", description: "" },
+      { title: "Do not harass anyone in any kind. (Outside the chat counts too.)", description: "" },
+      { title: "Do not invite any bots without permission.", description: "" },
     ];
     for (const rule of rulesList) {
       await storage.createRule(rule);

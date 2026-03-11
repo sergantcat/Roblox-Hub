@@ -1,4 +1,4 @@
-import { Gamepad2, Twitter, Youtube, Github, Disc } from "lucide-react";
+import { Gamepad2, Disc } from "lucide-react";
 import { Link } from "wouter";
 
 export function Footer() {
@@ -24,17 +24,6 @@ export function Footer() {
             <p className="text-muted-foreground max-w-md mb-6 leading-relaxed">
               Welcome to the Nuclear Detrium Research Institute. Join thousands of players in an immersive scientific adventure built by an incredible team of developers.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all">
-                <Youtube className="w-5 h-5" />
-              </a>
-              <a href={discordLink} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-muted-foreground hover:text-[#5865F2] hover:border-[#5865F2]/50 transition-all">
-                <Disc className="w-5 h-5" />
-              </a>
-            </div>
           </div>
 
           <div>
