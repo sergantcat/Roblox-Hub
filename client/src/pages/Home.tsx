@@ -146,7 +146,7 @@ export default function Home() {
               <ul className="space-y-4 mb-8">
                 <li className="flex items-center gap-3">
                   <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary"><Zap className="w-3 h-3" /></div>
-                  <span className="text-foreground font-medium">Frequent Content Updates</span>
+                  <span className="text-foreground font-medium">We are developing the game nonstop to roll out cool updates and functions</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary"><Zap className="w-3 h-3" /></div>
