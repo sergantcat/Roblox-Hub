@@ -17,45 +17,112 @@ export async function registerRoutes(
     res.json(allRules);
   });
 
-  // Seed database
+  // Manual endpoint to re-fetch all Roblox avatars
+  app.post("/api/refresh-avatars", async (req, res) => {
+    try {
+      await updateAllRobloxAvatars();
+      res.json({ success: true, message: "Avatars refreshed from Roblox." });
+    } catch (err) {
+      res.status(500).json({ success: false, message: "Failed to refresh avatars." });
+    }
+  });
+
+  // Seed database then auto-fetch Roblox avatars
   await seedDatabase();
+  updateAllRobloxAvatars().catch(console.error); // run in background, don't block startup
 
   return httpServer;
 }
 
+// ─── Roblox API helpers ───────────────────────────────────────────────────────
+
+async function fetchRobloxUserId(username: string): Promise<number | null> {
+  try {
+    const res = await fetch("https://users.roblox.com/v1/usernames/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ usernames: [username], excludeBannedUsers: false }),
+    });
+    if (!res.ok) return null;
+    const data = await res.json() as { data: { id: number; name: string }[] };
+    return data.data?.[0]?.id ?? null;
+  } catch {
+    return null;
+  }
+}
+
+async function fetchRobloxAvatarUrl(userId: number): Promise<string | null> {
+  try {
+    const res = await fetch(
+      `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=420x420&format=Png&isCircular=false`
+    );
+    if (!res.ok) return null;
+    const data = await res.json() as { data: { imageUrl: string }[] };
+    return data.data?.[0]?.imageUrl ?? null;
+  } catch {
+    return null;
+  }
+}
+
+async function getRobloxAvatarForUsername(username: string): Promise<string | null> {
+  const userId = await fetchRobloxUserId(username);
+  if (!userId) return null;
+  return await fetchRobloxAvatarUrl(userId);
+}
+
+// Fetch avatars for all team members from Roblox and save to DB
+async function updateAllRobloxAvatars() {
+  const members = await storage.getTeamMembers();
+  // Deduplicate usernames so we don't double-call for people in both dev+mod
+  const seen = new Set<string>();
+
+  for (const member of members) {
+    if (seen.has(member.name)) continue;
+    seen.add(member.name);
+
+    const avatarUrl = await getRobloxAvatarForUsername(member.name);
+    if (avatarUrl) {
+      // Update all rows with this name (covers duplicate names in dev+mod)
+      const sameNameMembers = members.filter(m => m.name === member.name);
+      for (const m of sameNameMembers) {
+        await storage.updateTeamMemberAvatar(m.id, avatarUrl);
+      }
+      console.log(`[Roblox] Updated avatar for ${member.name}`);
+    } else {
+      console.log(`[Roblox] Could not fetch avatar for ${member.name} — keeping placeholder`);
+    }
+  }
+}
+
+// ─── Seed ─────────────────────────────────────────────────────────────────────
+
 async function seedDatabase() {
   const existingMembers = await storage.getTeamMembers();
   if (existingMembers.length === 0) {
-    // Adding 9 Devs
     const devs = [
-      { name: "Homejungle123", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Homejungle123" },
-      { name: "Erycd14", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Erycd14" },
-      { name: "CaptainUSC1", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=CaptainUSC1" },
-      { name: "James", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=James" },
-      { name: "Marioplayz", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Marioplayz" },
-      { name: "Nichita", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Nichita" },
-      { name: "Kolofdit", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Kolofdit" },
-      { name: "Airspeed60", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Airspeed60" },
-      { name: "AnNoobi5", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=AnNoobi5dev" },
-      { name: "KirillGl632", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=KirillGl632" },
-      { name: "Kacpersok", role: "Developer", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Kacpersok" },
+      { name: "Homejungle123", role: "Developer", avatarUrl: "" },
+      { name: "Erycd14",       role: "Developer", avatarUrl: "" },
+      { name: "CaptainUSC1",   role: "Developer", avatarUrl: "" },
+      { name: "James",         role: "Developer", avatarUrl: "" },
+      { name: "Marioplayz",    role: "Developer", avatarUrl: "" },
+      { name: "Nichita",       role: "Developer", avatarUrl: "" },
+      { name: "Kolofdit",      role: "Developer", avatarUrl: "" },
+      { name: "Airspeed60",    role: "Developer", avatarUrl: "" },
+      { name: "AnNoobi5",      role: "Developer", avatarUrl: "" },
+      { name: "KirillGl632",   role: "Developer", avatarUrl: "" },
+      { name: "Kacpersok",     role: "Developer", avatarUrl: "" },
     ];
-    for (const dev of devs) {
-      await storage.createTeamMember(dev);
-    }
+    for (const dev of devs) await storage.createTeamMember(dev);
 
-    // Adding 6 Mods
     const mods = [
-      { name: "AnNoobi5", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=AnNoobi5mod" },
-      { name: "PCS802", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=PCS802" },
-      { name: "Erycd14", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Erycd14mod" },
-      { name: "ArmedF16", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=ArmedF16" },
-      { name: "Homejungle123", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Homejungle123mod" },
-      { name: "James", role: "Moderator", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jamesmod" },
+      { name: "AnNoobi5",      role: "Moderator", avatarUrl: "" },
+      { name: "PCS802",        role: "Moderator", avatarUrl: "" },
+      { name: "Erycd14",       role: "Moderator", avatarUrl: "" },
+      { name: "ArmedF16",      role: "Moderator", avatarUrl: "" },
+      { name: "Homejungle123", role: "Moderator", avatarUrl: "" },
+      { name: "James",         role: "Moderator", avatarUrl: "" },
     ];
-    for (const mod of mods) {
-      await storage.createTeamMember(mod);
-    }
+    for (const mod of mods) await storage.createTeamMember(mod);
   }
 
   const existingRules = await storage.getRules();
@@ -73,8 +140,6 @@ async function seedDatabase() {
       { title: "Do not harass anyone in any kind. (Outside the chat counts too.)", description: "" },
       { title: "Do not invite any bots without permission.", description: "" },
     ];
-    for (const rule of rulesList) {
-      await storage.createRule(rule);
-    }
+    for (const rule of rulesList) await storage.createRule(rule);
   }
 }

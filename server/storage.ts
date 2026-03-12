@@ -7,6 +7,7 @@ export interface IStorage {
   getRules(): Promise<Rule[]>;
   createTeamMember(member: InsertTeamMember): Promise<TeamMember>;
   createRule(rule: InsertRule): Promise<Rule>;
+  updateTeamMemberAvatar(id: number, avatarUrl: string): Promise<void>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -26,6 +27,10 @@ export class DatabaseStorage implements IStorage {
   async createRule(rule: InsertRule): Promise<Rule> {
     const [newRule] = await db.insert(rules).values(rule).returning();
     return newRule;
+  }
+
+  async updateTeamMemberAvatar(id: number, avatarUrl: string): Promise<void> {
+    await db.update(teamMembers).set({ avatarUrl }).where(eq(teamMembers.id, id));
   }
 }
 

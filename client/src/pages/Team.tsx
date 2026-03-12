@@ -148,9 +148,12 @@ function TeamCard({ member, type, variants }: { member: any, type: 'dev'|'mod', 
           isDev ? "bg-primary" : "bg-accent"
         )} />
         <img 
-          src={member.avatarUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random`} 
+          src={member.avatarUrl || `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(member.name)}`}
           alt={member.name}
           className="w-24 h-24 rounded-full object-cover border-2 border-white/10 relative z-10 group-hover:border-white/30 transition-colors bg-muted"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(member.name)}`;
+          }}
         />
       </div>
       
