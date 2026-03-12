@@ -103,24 +103,24 @@ async function seedDatabase() {
       { name: "Homejungle123", role: "Developer", avatarUrl: "" },
       { name: "Erycd14",       role: "Developer", avatarUrl: "" },
       { name: "CaptainUSC1",   role: "Developer", avatarUrl: "" },
-      { name: "James",         role: "Developer", avatarUrl: "" },
+      { name: "TheElder128",   role: "Developer", avatarUrl: "" },
       { name: "Marioplayz",    role: "Developer", avatarUrl: "" },
-      { name: "Nichita",       role: "Developer", avatarUrl: "" },
+      { name: "nichita10901",  role: "Developer", avatarUrl: "" },
       { name: "Kolofdit",      role: "Developer", avatarUrl: "" },
       { name: "Airspeed60",    role: "Developer", avatarUrl: "" },
-      { name: "AnNoobi5",      role: "Developer", avatarUrl: "" },
+      { name: "AnNoobie5",     role: "Developer", avatarUrl: "" },
       { name: "KirillGl632",   role: "Developer", avatarUrl: "" },
-      { name: "Kacpersok",     role: "Developer", avatarUrl: "" },
+      { name: "Kaper_polska3", role: "Developer", avatarUrl: "" },
     ];
     for (const dev of devs) await storage.createTeamMember(dev);
 
     const mods = [
-      { name: "AnNoobi5",      role: "Moderator", avatarUrl: "" },
+      { name: "AnNoobie5",     role: "Moderator", avatarUrl: "" },
       { name: "PCS802",        role: "Moderator", avatarUrl: "" },
       { name: "Erycd14",       role: "Moderator", avatarUrl: "" },
       { name: "ArmedF16",      role: "Moderator", avatarUrl: "" },
       { name: "Homejungle123", role: "Moderator", avatarUrl: "" },
-      { name: "James",         role: "Moderator", avatarUrl: "" },
+      { name: "TheElder128",   role: "Moderator", avatarUrl: "" },
     ];
     for (const mod of mods) await storage.createTeamMember(mod);
   }
