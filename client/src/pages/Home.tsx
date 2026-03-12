@@ -141,7 +141,7 @@ export default function Home() {
             >
               <h2 className="font-display text-4xl md:text-5xl mb-6">BUILT BY A DEDICATED <span className="text-primary">TEAM</span></h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Our game is constantly evolving thanks to our incredible team of 11 Developers and 6 Moderators. We are developing the game nonstop to roll out cool updates and functions, listen to community feedback, and strive for the highest quality gameplay on the platform.
+                Our game is constantly evolving thanks to our incredible team of 11 Developers and 6 Moderators. We are developing the game nonstop to roll out cool updates and functions, we listen to community feedbacks, and we make their ideas to reality.
               </p>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-center gap-3">
