@@ -22,7 +22,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-muted-foreground max-w-md mb-6 leading-relaxed">
-              Welcome to the Nuclear Detrium Research Institute. Join thousands of players in an immersive scientific adventure built by an incredible team of developers.
+              Welcome to the Nuclear Detrium Research Institute. Join the peak gameplay as a scientist that is researching or as a raider that attempts to blow up the facility and more.
             </p>
           </div>
 
